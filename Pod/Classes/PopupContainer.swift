@@ -116,7 +116,7 @@ public class PopupContainer: UIView {
         self.frame = CGRectMake(0, 0, largerSide * 2, largerSide * 2)
         
         self.dialogView.layer.opacity = 0.5
-        self.dialogView.layer.transform = CATransform3DMakeScale(1.3, 1.3, 1.0)
+        self.dialogView.layer.transform = CATransform3DMakeScale(1.1, 1.1, 1.0)
         
         self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0)
         self.addSubview(self.dialogView)
@@ -165,7 +165,7 @@ public class PopupContainer: UIView {
             options: UIViewAnimationOptions.TransitionNone,
             animations: { () -> Void in
                 self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0)
-                self.dialogView.layer.transform = CATransform3DMakeScale(0.6, 0.6, 1)
+                self.dialogView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 1)
                 self.dialogView.layer.opacity = 0
             }) { (finished: Bool) -> Void in
             self.removeFromSuperview()
