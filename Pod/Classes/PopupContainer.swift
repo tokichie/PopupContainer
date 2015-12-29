@@ -22,7 +22,7 @@
 
 import UIKit
 
-private let kDialogViewCornerRadius : CGFloat = 3
+private let kDialogViewCornerRadius : CGFloat = 10
 
 public class PopupContainer: UIView {
     
