@@ -26,8 +26,6 @@ private let kDialogViewCornerRadius : CGFloat = 10
 
 public class PopupContainer: UIView {
     
-    let kMotionEffectExtent : CGFloat = 10
-
     var dialogView : UIView!
     
     public class func generatePopupWithView(view: UIView) -> PopupContainer{
@@ -54,21 +52,6 @@ public class PopupContainer: UIView {
     }
     
     // MARK: Setup UI methods
-    
-    func applyMotionEffects() {
-        let horizontalEfect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
-        horizontalEfect.minimumRelativeValue = -kMotionEffectExtent
-        horizontalEfect.maximumRelativeValue = kMotionEffectExtent
-        
-        let verticalEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-        verticalEffect.minimumRelativeValue = -kMotionEffectExtent
-        verticalEffect.maximumRelativeValue = kMotionEffectExtent
-        
-        let motionEffectGroup = UIMotionEffectGroup()
-        motionEffectGroup.motionEffects = [horizontalEfect, verticalEffect]
-        
-        self.dialogView.addMotionEffect(motionEffectGroup)
-    }
     
     func interfaceOrientationChanged(notification: NSNotification) {
         var rotationAngle : CGFloat = 0
@@ -106,8 +89,6 @@ public class PopupContainer: UIView {
     // MARK: - Interaction Methods
     
     public func show() {
-        self.applyMotionEffects()
-        
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let screenHeight = UIScreen.mainScreen().bounds.size.height
         let largerSide = screenWidth > screenHeight ? screenWidth : screenHeight
