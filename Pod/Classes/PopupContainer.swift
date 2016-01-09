@@ -27,6 +27,7 @@ private let kDialogViewCornerRadius : CGFloat = 10
 public class PopupContainer: UIView {
     
     var dialogView : UIView!
+    var onClose: (() -> ())?
     
     public class func generatePopupWithView(view: UIView) -> PopupContainer{
         let popupContainer = PopupContainer()
@@ -88,7 +89,9 @@ public class PopupContainer: UIView {
     
     // MARK: - Interaction Methods
     
-    public func show() {
+    public func show(onClose: (() -> ())? = nil) {
+        self.onClose = onClose
+
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let screenHeight = UIScreen.mainScreen().bounds.size.height
         let largerSide = screenWidth > screenHeight ? screenWidth : screenHeight
@@ -148,8 +151,9 @@ public class PopupContainer: UIView {
                 self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0)
                 self.dialogView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 1)
                 self.dialogView.layer.opacity = 0
-            }) { (finished: Bool) -> Void in
+        }) { (finished: Bool) -> Void in
             self.removeFromSuperview()
+	    self.onClose?()
         }
     }
 
