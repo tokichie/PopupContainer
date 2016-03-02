@@ -27,7 +27,7 @@ private let kDialogViewCornerRadius : CGFloat = 10
 public class PopupContainer: UIView {
     
     var dialogView : UIView!
-    var onClose: (() -> ())?
+    public var onClose: (() -> ())?
     
     public class func generatePopupWithView(view: UIView) -> PopupContainer{
         let popupContainer = PopupContainer()
