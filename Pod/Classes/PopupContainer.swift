@@ -26,11 +26,13 @@ private let kDialogViewCornerRadius : CGFloat = 10
 
 public class PopupContainer: UIView {
     
+    var cancelable: Bool!
     var dialogView : UIView!
     public var onClose: (() -> ())?
     
-    public class func generatePopupWithView(view: UIView) -> PopupContainer{
+    public class func generatePopupWithView(view: UIView, cancelable: Bool = false) -> PopupContainer{
         let popupContainer = PopupContainer()
+        popupContainer.cancelable = cancelable
         
         UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
         NSNotificationCenter.defaultCenter().addObserver(
@@ -81,6 +83,7 @@ public class PopupContainer: UIView {
     // MARK: Touch events
 
     public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard cancelable! else { return }
         let touch = touches.first!
         if touchIsOutsideDialogView(touch) {
             close()
