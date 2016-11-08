@@ -97,10 +97,9 @@ public class PopupContainer: UIView {
 
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let screenHeight = UIScreen.mainScreen().bounds.size.height
-        let largerSide = screenWidth > screenHeight ? screenWidth : screenHeight
         
         //For the black background
-        self.frame = CGRectMake(0, 0, largerSide * 2, largerSide * 2)
+        self.frame = CGRectMake(0, 0, screenWidth, screenHeight)
         
         self.dialogView.layer.opacity = 0.5
         self.dialogView.layer.transform = CATransform3DMakeScale(1.1, 1.1, 1.0)
