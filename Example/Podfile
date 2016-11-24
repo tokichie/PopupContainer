@@ -1,5 +1,8 @@
-source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
 
-pod "PopupContainer", :path => "../"
+target 'PopupContainerExample' do
+  use_frameworks!
 
+  pod "PopupContainer", :path => "../"
+end
