@@ -11,9 +11,9 @@ import PopupContainer
 
 class XibPopup: UIView {
     
-    @IBAction func closePopupButtonPressed(sender: AnyObject) {
+    @IBAction func closePopupButtonPressed(_ sender: AnyObject) {
         if let superView = self.superview {
-            if superView.isKindOfClass(PopupContainer) {
+            if superView is PopupContainer {
                 (superView as! PopupContainer).close()
             }
         }
